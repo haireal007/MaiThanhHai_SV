@@ -3,6 +3,7 @@ package controller;
 import dao.ClassStudentDao;
 import dao.StudentDao;
 import model.ClassStudent;
+import model.Login;
 import model.Student;
 
 import javax.servlet.RequestDispatcher;
@@ -39,6 +40,9 @@ public class StudentServlet extends HttpServlet {
                 break;
             case "edit":
                 edit(req, resp);
+                break;
+            case "singout":
+                singout(req,resp);
                 break;
             default:
                 show(req, resp);
@@ -118,5 +122,9 @@ public class StudentServlet extends HttpServlet {
         req.setAttribute("classStudent",classStudent);
         RequestDispatcher dispatcher = req.getRequestDispatcher("/edit.jsp");
         dispatcher.forward(req, resp);
+    }
+    private void singout(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
+        Login.account = null;
+        resp.sendRedirect("/student");
     }
 }

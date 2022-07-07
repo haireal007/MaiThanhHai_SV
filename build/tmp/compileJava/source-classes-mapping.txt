@@ -1,7 +1,7 @@
 dao/StudentDao.java
  dao.StudentDao
-controller/LoginServlet.java
- controller.LoginServlet
+model/Student.java
+ model.Student
 model/ClassStudent.java
  model.ClassStudent
 dao/CRUD.java
@@ -12,13 +12,13 @@ dao/AccountDao.java
  dao.AccountDao
 dao/ClassStudentDao.java
  dao.ClassStudentDao
-controller/StudentServlet.java
- controller.StudentServlet
+controller/filter/CheckLogin.java
+ controller.filter.CheckLogin
 model/Login.java
  model.Login
 connect_MySQL/Connect_MySQL.java
  connect_MySQL.Connect_MySQL
-model/Student.java
- model.Student
-controller/filter/CheckLogin.java
- controller.filter.CheckLogin
+controller/LoginServlet.java
+ controller.LoginServlet
+controller/StudentServlet.java
+ controller.StudentServlet

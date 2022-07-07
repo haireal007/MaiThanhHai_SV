@@ -40,7 +40,7 @@
                 <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
                 <li class="nav-item"><a class="nav-link" href="#signup">Contact</a></li>
             </ul>
-            <button type="button" class="btn btn-success"><a href="?Login.account == null">SingOut</a></button>
+            <button type="button" class="btn btn-success"><a href="/student?action=singout">SingOut</a></button>
         </div>
     </div>
 </nav>

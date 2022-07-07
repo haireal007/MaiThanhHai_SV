@@ -18,6 +18,12 @@ public class LoginServlet extends HttpServlet {
     AccountDao accountDao = new AccountDao();
 
     @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        RequestDispatcher requestDispatcher= req.getRequestDispatcher("/login.jsp");
+        requestDispatcher.forward(req,resp);
+    }
+
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse resp) throws ServletException, IOException {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
