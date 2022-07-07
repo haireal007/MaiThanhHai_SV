@@ -1,5 +1,5 @@
-model/Student.java
- model.Student
+dao/StudentDao.java
+ dao.StudentDao
 controller/LoginServlet.java
  controller.LoginServlet
 model/ClassStudent.java
@@ -8,13 +8,13 @@ controller/filter/CheckLogin.java
  controller.filter.CheckLogin
 dao/CRUD.java
  dao.CRUD
+dao/ClassStudentDao.java
+ dao.ClassStudentDao
+model/Student.java
+ model.Student
 model/Login.java
  model.Login
 connect_MySQL/Connect_MySQL.java
  connect_MySQL.Connect_MySQL
-dao/StudentDao.java
- dao.StudentDao
-dao/ClassStudentDao.java
- dao.ClassStudentDao
 controller/StudentServlet.java
  controller.StudentServlet

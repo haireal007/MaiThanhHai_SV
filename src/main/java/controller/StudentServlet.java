@@ -2,6 +2,7 @@ package controller;
 
 import dao.ClassStudentDao;
 import dao.StudentDao;
+import model.ClassStudent;
 import model.Student;
 
 import javax.servlet.RequestDispatcher;
@@ -36,6 +37,9 @@ public class StudentServlet extends HttpServlet {
             case "delete":
                 delete(req, resp);
                 break;
+            case "edit":
+                edit(req, resp);
+                break;
             default:
                 show(req, resp);
         }
@@ -51,7 +55,7 @@ public class StudentServlet extends HttpServlet {
         RequestDispatcher dispatcher = null;
         switch (action) {
             case "create":
-                int id = studentDao.getAll().size()+1;
+                int id = studentDao.getAll().size() + 1;
                 String name = request.getParameter("name");
                 LocalDate birth = LocalDate.parse(request.getParameter("birth"));
                 String address = request.getParameter("address");
@@ -61,6 +65,19 @@ public class StudentServlet extends HttpServlet {
 
                 Student st = new Student(id, name, birth, address, phone, email, classStudentDao.findById(idClass));
                 studentDao.create(st);
+                resp.sendRedirect("/student");
+                break;
+            case "edit":
+                int ide = Integer.parseInt(request.getParameter("id"));
+                String namee = request.getParameter("name");
+                LocalDate birthe = LocalDate.parse(request.getParameter("birth"));
+                String addresse = request.getParameter("address");
+                String phonee = request.getParameter("phone");
+                String emaile = request.getParameter("email");
+                int idClasse = Integer.parseInt(request.getParameter("class"));
+
+                Student ste = new Student(ide, namee, birthe, addresse, phonee, emaile, classStudentDao.findById(idClasse));
+                studentDao.edit(ide,ste);
                 resp.sendRedirect("/student");
                 break;
         }
@@ -89,11 +106,17 @@ public class StudentServlet extends HttpServlet {
         List<Student> students = studentDao.getAll();
         int id = Integer.parseInt(req.getParameter("id"));
         studentDao.delete(id);
-        req.setAttribute("classStudent",students);
+        req.setAttribute("classStudent", students);
         resp.sendRedirect("/student");
     }
 
     private void edit(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+        int id = Integer.parseInt(req.getParameter("id"));
+        Student student = studentDao.findById(id);
+        List<ClassStudent> classStudent = classStudentDao.getAll();
+        req.setAttribute("student",student );
+        req.setAttribute("classStudent",classStudent);
+        RequestDispatcher dispatcher = req.getRequestDispatcher("/edit.jsp");
+        dispatcher.forward(req, resp);
     }
 }
