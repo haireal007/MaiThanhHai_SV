@@ -1,5 +1,5 @@
 package model;
 
 public class Login {
-    public static String name;
+    public static Account account;
 }
